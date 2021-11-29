@@ -36,20 +36,20 @@ unsigned int dist_optimized(const std::vector<unsigned char>& v1, const std::vec
 int main(void) {
 
     std::default_random_engine generator;
-    std::uniform_real_distribution<unsigned char> distribution(0,255);
+    std::uniform_real_distribution<float> distribution(0,255);
 
     // creating test points
     const unsigned int numPoints = 32 * 1000000;
     std::vector<unsigned char> pointsA;
     pointsA.resize(numPoints);
     for(unsigned char& point: pointsA) {
-        point = distribution(generator);
+        point = static_cast<unsigned char>(distribution(generator));
     }
 
     std::vector<unsigned char> pointsB;
     pointsB.resize(numPoints);
     for(unsigned char& point: pointsB) {
-        point = distribution(generator);
+        point = static_cast<unsigned char>(distribution(generator));
     }
 
     // call the baseline function
